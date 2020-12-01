@@ -1,0 +1,54 @@
+     <section class="section-padding mt-50">
+        <div class="container"  *ngFor="let special of newspecials " >
+            <div  >
+                <div class="row  mb-30" >
+                        <div class="col-md-7 p-5">
+                      
+                            <span  *ngIf="special.geo" > 
+                            <!-- check google maps for  coordinates<br> 
+                            {{special.geo}} -->
+                            <center><h1 class="section-title">Hurry before promo ends!!!</h1></center> 
+                                            
+                        <!-- there are some depencies on versioning error on angular 11            
+                                     <agm-map [latitude]="lat" [longitude]="lng">
+                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                        </agm-map>
+                        -->        
+                            </span>
+                            
+                            <span  *ngIf="special.code" > 
+                            <center><h6>PROMOCODE </h6></center> 
+                            <h2 class="card-footer section-title">{{special.code}}</h2>
+                            </span>
+                            
+                            <span *ngIf="!special.geo" >
+                                <span *ngIf="!special.code">
+                                    <div>
+                                   <center><h1 class="section-title">ON SALE!!!</h1></center> 
+                                    </div>
+                                </span> 
+                            </span>
+                            
+
+                               
+                            
+
+                        </div>
+                        <div class="col-md-5 p-5 border badge-warning" data-animate-effect="fadeInUp">
+                        <h2>{{special.title}}</h2>
+                        
+                            <span *ngFor="let recipe of recipes">
+                                <span *ngFor="let ing of recipe.ingredients">
+                                    <span *ngIf="special.uuid==ing.uuid">
+                                        {{ing.name}}
+                                    </span>
+                                </span>
+                            </span>
+                        
+                        <span> {{special.text}} </span> 
+                     </div>
+            </div>
+            </div>
+        </div>
+    </section>
+

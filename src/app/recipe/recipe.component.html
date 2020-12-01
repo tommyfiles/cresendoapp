@@ -1,0 +1,68 @@
+<!-- 
+ <app-home (getRecipeUuid)="setRecipeDetails($event)" [hidden]=true></app-home> -->
+     <section class="section-padding mt-50">
+        <div class="container"  *ngFor="let recipe of newrecipes " >
+            <div >
+            <div class="row">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
+                    <span class="section-subtitle">	RECEIPTS | {{recipe.postDate | date}}</span>
+                    <h2 class="section-title">{{recipe.title}}</h2>
+                </div>
+            </div>
+           
+            <!-- Gallery -->
+            <div class="row winta-photos mb-30" id="winta-section-photos">
+                        <div class="col-md-7 gallery-item">
+							<h5>{{recipe.description}}</h5>
+							<div>Servings : <span class="bold"> {{recipe.servings}} </span> </div>
+							<div>Preparation Time :  <span class="bold">  {{recipe.prepTime}} mins </span></div>
+							<div>Cook Time : <span class="bold">  {{recipe.cookTime}} mins </span></div>
+
+                            <a href="../assets{{recipes[0].images.full}}" title="" class="img-zoom">
+                              <div class="gallery-box mt-50">
+                                    <div class="gallery-img"> <img src="../assets{{recipe.images.medium}}" class="img-fluid mx-auto d-block" alt="cresendo-img"> </div>
+                                </div>
+                            </a>
+                       	
+                       		<!-- directions -->
+                            <div>
+                             <h4 class="mt-50">Directions</h4>
+                            	<div *ngFor="let dir of recipe.directions" >
+                            	
+                            		<div *ngIf="!dir.optional">
+                            		<div>{{dir.instructions}}</div>	
+                            		</div>
+									
+									<div *ngIf="dir.optional">
+									<div >
+									<span class="bold">{{dir.instructions}}</span>
+									
+									<i>(this is optional)</i> </div>
+									</div>
+
+                            	</div>
+                            	
+                            </div>
+
+                        </div>
+				
+
+
+				<div class="col-md-5 " data-animate-effect="fadeInUp">
+					  <h4>Ingredients :</h4>
+	                  	<div *ngFor="let ing of recipe.ingredients" >
+	                  	<div class="bold">	{{ing.name | uppercase}}  
+	                  	<span class="promobtn" *ngIf="checkpromo(ing.uuid)" (click)="showpromodetails(ing.uuid)" > <i>(promo) </i> </span> 
+	                  	 
+	                  	 </div>
+	                  	 
+	                  	<div> amount :	{{ing.amount}} </div>
+	                  	<div> measurement : {{ing.measurement}} </div>
+	                  	</div>  
+				
+				</div>
+            </div>
+            </div>
+        </div>
+    </section>
+

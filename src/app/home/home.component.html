@@ -1,0 +1,99 @@
+<!-- looks nice but this has a bug upon loading  -->
+<!-- <header class="header slider-fade">
+	 <div class="owl-carousel owl-theme">
+		 <div *ngFor="let recipe of recipes" >
+			<div class="text-left item " data-overlay-dark="4" >	
+
+		 <img src="../assets{{recipe.images.medium}}">		
+		 	<div class="v-middle caption mt-30">
+				<h2>{{recipe.title}}</h2>
+				<h4>{{recipe.description}}</h4>
+				</div>
+
+		    </div>
+		 </div>
+	</div>
+</header>
+ -->
+
+<div id="slider">
+<figure>
+<div *ngFor="let recipe of recipes" >
+		 <img src="../assets{{recipe.images.full}}">		
+
+</div>
+</figure>
+</div>
+
+
+<section class="newshome section-padding">
+<div class="container">
+	<div class="row">
+	    <div class="col-md-12 mb-30">
+	        <span class="section-subtitle">Want to Cook something Tasty? Try this</span>
+	        <h2 class="section-title">Our <span>Recipes</span></h2>
+	    </div>
+	</div>
+	<div class="row">
+	<div class="col-md-12">
+	</div>
+	<div class="row"  *ngFor="let recipe of recipes">
+		
+		<div class="col-md-10" >
+            <div class="item " data-animate-effect="fadeInUp">
+				<div class="post-img">
+				<div class="img recipe-img-thumb" > <img src="../assets{{recipe.images.small}}" alt="img"> </div>
+				</div>
+				<div class="cont">
+				<h6><span (click)="showRecipeDetails(recipe.uuid)" >{{recipe.title}}</span></h6>
+				<p>{{recipe.description}}</p>
+				
+				<span class="more" (click)="showRecipeDetails(recipe.uuid)">Details <i class="ti-angle-double-right"></i></span>
+				</div>
+
+         	</div>
+         </div>
+	
+	</div>
+	</div>
+</div>
+</section>
+
+
+    <!-- Menu Dishes -->
+    <section class="menu-today section-padding bg-lightcolor">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <span class="section-subtitle">Latest News</span>
+                    <h2 class="section-title">Promos <span>Events</span></h2>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-md-4" *ngFor="let special of specials">
+                    <div class="menu-today-container" (click)="showPromoDetails(special.uuid)">
+                        <div class="menu-today-img-area">
+                        <h2>{{special.title}}</h2>
+                        <!-- <span class="icon flaticon-022-tray"></span> --></div>
+                        <div class="menu-today-text-area">
+                            <h4 class="menu-today-heading">{{special.type}}</h4>
+                            <ul>
+                                <li>{{special.text}}</li>
+                                <li *ngIf="special.code">GET YOUR PROMOCODE</li>
+                                <!-- <li *ngIf="special.geo">{{special.geo}}</li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
